@@ -178,7 +178,7 @@
                     </a>
                 </li>
 
-                {{-- <li class="nav-item 
+                <li class="nav-item 
                 {{ Request::is('circle') ? 'active' : '' }}
                 ">
                     <a href="{{ route('circle') }}" class="nav-link ">
@@ -186,7 +186,7 @@
                             <i class="fas fa-map-marker"></i>
                         </span>
                         <span class="sidebar-text">Circle</span>
-                    </a> --}}
+                    </a>
                 </li>
                 <!--SIDEBAR MENU-->
               
