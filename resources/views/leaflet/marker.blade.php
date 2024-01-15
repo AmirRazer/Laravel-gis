@@ -16,7 +16,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                <div class="card-header">Simple map</div>
+                <div class="card-header">Markers</div>
                 <div class="card-body">
                     <div id="map"></div>
                     </div>
@@ -40,6 +40,34 @@
 		maxZoom: 19,
 		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}).addTo(map);
+    // var iconMarker = L.icon({
+    //     iconUrl: '{{ asset('iconMarkers/marker.png') }}',
+    //     // iconSize: [25, 41],
+    //     // iconAnchor: [12, 41],
+    //     // popupAnchor: [1, -34],
+    // })
+    var iconMarker = L.icon({
+            iconUrl:'{{ asset('iconMarkers/marker.png') }}',
+            iconSize:[50,50],
+            
+        })
+    var marker = L.marker([-6.658693935480687, 110.90424904157845],
+    {
+        icon: iconMarker,
+        draggable: true,
+        title: "Klik untuk menambahkan marker",
+    })
+    .bindPopup('Tampilan Pesan disini')
+    .addTo(map);
+       var marker2 = L.marker([-6.680686411017694, 110.90297152692682],
+    {
+        // icon: iconMarker,
+        draggable: true,
+        title: "Klik untuk menambahkan marker",
+    })
+    .bindPopup('Tampilan Pesan disini 1')
+    .addTo(map);
+
 
 </script>
 @endpush
