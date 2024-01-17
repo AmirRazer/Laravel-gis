@@ -161,7 +161,9 @@
                 ">
                     <a href="{{ route('simple-map') }}" class="nav-link ">
                         <span class="sidebar-icon">
-                           <i class="fas fa-map"></i>
+                           <i class="fas fa-map">
+                            <img width="26" height="26" src="https://img.icons8.com/3d-fluency/94/map-marker--v2.png" alt="map-marker--v2"/>
+                           </i>
                         </span>
                         <span class="sidebar-text">Simple Map</span>
                     </a>
@@ -172,7 +174,9 @@
                 ">
                     <a href="{{ route('markers') }}" class="nav-link ">
                         <span class="sidebar-icon">
-                            <i class="fas fa-map-marker"></i>
+                            <i class="fas fa-map-marker">
+                                <img width="26" height="26" src="https://img.icons8.com/color/48/visit.png" alt="visit"/>
+                            </i>
                         </span>
                         <span class="sidebar-text">Markers</span>
                     </a>
@@ -183,7 +187,9 @@
                 ">
                     <a href="{{ route('circle') }}" class="nav-link ">
                         <span class="sidebar-icon">
-                            <i class="fas fa-map-marker"></i>
+                            <i class="fas fa-map-marker">
+                                <img width="26" height="26" src="https://img.icons8.com/nolan/64/circled.png" alt="circled"/>
+                            </i>
                         </span>
                         <span class="sidebar-text">Circle</span>
                     </a>
@@ -218,6 +224,16 @@
                             <i class="fas fa-map-marker"></i>
                         </span>
                         <span class="sidebar-text">Rectangle</span>
+                    </a>
+                </li>
+                  <li class="nav-item 
+                {{ Request::is('layer') ? 'active' : '' }}
+                ">
+                    <a href="{{ route('layer') }}" class="nav-link ">
+                        <span class="sidebar-icon">
+                            <i class="fas fa-map-marker"></i>
+                        </span>
+                        <span class="sidebar-text">Layer Control</span>
                     </a>
                 </li>
                 <!--SIDEBAR MENU-->

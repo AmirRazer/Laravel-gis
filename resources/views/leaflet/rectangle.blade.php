@@ -47,7 +47,7 @@
 		[-6.681417012115073, 110.88173734914902],
 		[-6.678334406410355, 110.8955014719769]
 	]
-    L.rectangle(coords,{weight:1,fillcolor:'#00814',fillopacity:0.8}).bindPopup('I am a rectangle.').addTo(map);
+    L.rectangle(coords, {weight:1, fillColor:'#ff0000', fillOpacity:0.2}).bindPopup('I am a rectangle.').addTo(map);
     map.fitBounds(coords);
 </script>
 @endpush
