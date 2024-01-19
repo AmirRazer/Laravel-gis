@@ -1,0 +1,5 @@
+.sidebar-collapsed {
+    width: 80px; /* Atur lebar yang diinginkan saat sidebar dikurangi */
+    overflow: hidden;
+    transition: width 0.3s ease;
+}

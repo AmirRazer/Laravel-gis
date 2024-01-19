@@ -53,7 +53,8 @@
 
     <!-- Volt CSS -->
     <link type="text/css" href="{{ asset('volt/html&css/css/volt.css') }}" rel="stylesheet">
-
+    
+    
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 @yield('css')
 </head>
@@ -234,6 +235,28 @@
                             <i class="fas fa-map-marker"></i>
                         </span>
                         <span class="sidebar-text">Layer Control</span>
+                    </a>
+                </li>
+
+                  <li class="nav-item 
+                {{ Request::is('layer_group') ? 'active' : '' }}
+                ">
+                    <a href="{{ route('layer_group') }}" class="nav-link ">
+                        <span class="sidebar-icon">
+                            <i class="fas fa-map-marker"></i>
+                        </span>
+                        <span class="sidebar-text">Layer Control Group</span>
+                    </a>
+                </li>
+
+                 <li class="nav-item 
+                {{ Request::is('geojson') ? 'active' : '' }}
+                ">
+                    <a href="{{ route('geojson') }}" class="nav-link ">
+                        <span class="sidebar-icon">
+                            <i class="fas fa-map-marker"></i>
+                        </span>
+                        <span class="sidebar-text">Geojson</span>
                     </a>
                 </li>
                 <!--SIDEBAR MENU-->
@@ -624,7 +647,11 @@
     <!-- Volt JS -->
     {{-- <script src="{{ asset('volt/hmtl&css/assets/js/volt.js') }}"></script> --}}
 
-
+    <script>
+document.querySelector('.navbar-toggler').addEventListener('click', function() {
+    document.querySelector('.nav').classList.toggle('sidebar-collapsed');
+});
+</script>
 </body>
 
 </html>
