@@ -260,9 +260,27 @@
                     </a>
                 </li>
                 <!--SIDEBAR MENU-->
+{{--               
+                <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
+            </ul>
+   --}}
+            <li class="nav-item 
+                {{ Request::is('get_coordinate') ? 'active' : '' }}
+                ">
+                    <a href="{{ route('get_coordinate') }}" class="nav-link ">
+                        <span class="sidebar-icon">
+                            <i class="fas fa-map-marker"></i>
+                        </span>
+                        <span class="sidebar-text">Get_coordinate</span>
+                    </a>
+                </li>
+                <!--SIDEBAR MENU-->
               
                 <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
             </ul>
+  
+
+
             <!--HEADER NAV-->
             
         </div>
@@ -642,6 +660,8 @@
 
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
     @stack('javascript')
     <!-- Volt JS -->
