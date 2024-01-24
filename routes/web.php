@@ -31,3 +31,7 @@ Route::get('/layer', [App\Http\Controllers\HomeController::class, 'layer'])->nam
 Route::get('/layer_group', [App\Http\Controllers\HomeController::class, 'layer_group'])->name('layer_group');
 Route::get('/geojson', [App\Http\Controllers\HomeController::class, 'geojson'])->name('geojson');
 Route::get('/get_coordinate', [App\Http\Controllers\HomeController::class, 'get_coordinate'])->name('get_coordinate');
+
+// Route Data table
+Route::get('/center-point/data', [App\Http\Controllers\backend\DataController::class, 'centerpoint'])->name('center-point-data');
+Route::resource('/center-point', App\Http\Controllers\backend\CenterPointController::class);

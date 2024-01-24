@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Center_Point;
 
 class CenterPointController extends Controller
 {
@@ -12,7 +13,7 @@ class CenterPointController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.Centrepoint.index');
     }
 
     /**
@@ -20,7 +21,7 @@ class CenterPointController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.CentrePoint.create');
     }
 
     /**
@@ -28,7 +29,19 @@ class CenterPointController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'coordinate' => 'required',
+
+        ]);
+        $centerpoint = new Center_Point;
+        $centerpoint->coordinate = $request->input('coordinate');
+        $centerpoint->save();
+
+        if ($centerpoint){
+            return to_route('center-point.index')->with('success','Data Center Point Berhasil di buat');
+        }else{
+            return to_route('center-point.index')->with('error','Data Center Point Gagal di buat');
+        }
     }
 
     /**
