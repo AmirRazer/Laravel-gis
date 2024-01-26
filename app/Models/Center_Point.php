@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Center_Point extends Model
 {
     use HasFactory;
+    
     protected $guarded = [];
 }

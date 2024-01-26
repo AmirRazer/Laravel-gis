@@ -12,7 +12,7 @@ class DataController extends Controller
     {
         $centerpoint = Center_Point::latest()->get();
         return datatables()->of($centerpoint)
-        ->addColumn('action','backend.Center_Point.action')
+        ->addColumn('action','backend.centerpoint.action')
         ->addIndexColumn()
         ->rawColumns(['action'])
         ->toJson();

@@ -13,7 +13,7 @@ class CenterPointController extends Controller
      */
     public function index()
     {
-        return view('backend.Centrepoint.index');
+        return view('backend.centerpoint.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class CenterPointController extends Controller
      */
     public function create()
     {
-        return view('backend.CentrePoint.create');
+        return view('backend.centerpoint.create');
     }
 
     /**
@@ -55,17 +55,25 @@ class CenterPointController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Center_Point $id)
     {
-        //
+        $centerpoint = Center_Point::findOrFail($id->id);
+        return view('backend.centerpoint.edit',['centerpoint' => $centerpoint]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Center_Point $id)
     {
-        //
+        $id = Center_Point::findOrFail($id->id);
+        $id->coordinate = $request->input('coordinate');
+        $id->update();
+        if ($id){
+            return to_route('center-point.index')->with('success','Data Center Point Berhasil di ubah');
+        }else{
+            return to_route('center-point.index')->with('error','Data Center Point Gagal di ubah');
+        }
     }
 
     /**
@@ -73,6 +81,8 @@ class CenterPointController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $centerpoint = Center_Point::findOrFail($id);
+        $centerpoint->delete();
+        return redirect()->route('center-point.index')->with('success','Data Center Point Berhasil di hapus');
     }
 }

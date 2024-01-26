@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('center__points', function (Blueprint $table) {
             $table->id();
-            $table->string('coordinates');
+            $table->string('coordinate');
             $table->timestamps();
         });
     }

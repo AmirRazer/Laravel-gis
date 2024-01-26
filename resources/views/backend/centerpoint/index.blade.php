@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-volt')
+{{-- @extends('layouts.dashboard-volt')
 
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
@@ -63,7 +63,7 @@
                     orderable:false,
                     searchable:false,
                 },{
-                    data:'coordinates',
+                    data:'coordinate',
                 },{
                     data:'action'
                 }
@@ -71,8 +71,8 @@
             })
         })
     </script>
-@endpush
-{{-- @extends('layouts.dashboard-volt')
+@endpush --}}
+@extends('layouts.dashboard-volt')
 
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
@@ -110,6 +110,12 @@
                                 </tr>
                             </thead>
                             <tbody></tbody>
+                            <form action="" method="POST" id="deleteForm">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Hapus" style="display: none" >
+
+                            </form>
                         </table>
                     </div>
                 </div>
@@ -120,6 +126,8 @@
 
 @push('javascript')
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    
     <script>
         $(function() {
             $('#dataCenterPoint').DataTable({
@@ -128,13 +136,13 @@
                 responisve: true,
                 lengthChange: true,
                 autoWidth: false,
-                ajax: '{{ route('center-point-data') }}',
+                ajax: '{{ route('center-point.data') }}',
                 columns: [{
                         data: 'DT_RowIndex',
                         orderable: false,
                         searchable: false
                     }, {
-                        data: 'coordinates'
+                        data: 'coordinate'
                     },
                     {
                         data: 'action'
@@ -143,4 +151,4 @@
             })
         })
     </script>
-@endpush --}}
+@endpush

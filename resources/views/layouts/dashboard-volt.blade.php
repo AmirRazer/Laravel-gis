@@ -129,6 +129,31 @@
                 </li>
 
                 <!--SIDEBAR MENU-->
+                <li class="nav-item">
+                    <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                        data-bs-toggle="collapse" data-bs-target="#submenu-app">
+                        <span>
+                            <span class="sidebar-icon">
+                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="sidebar-text">GIS Basic</span>
+                        </span>
+                        <span class="link-arrow">
+                            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </span>
+                    </span>
+                    <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
+                        <ul class="flex-column nav">
                 <li class="nav-item {{ Request::is('home') ?'active' : '' }}">
                     <a href="{{ route('home') }}" class="nav-link">
                         <span class="sidebar-icon">
@@ -274,6 +299,42 @@
                         <span class="sidebar-text">Get_coordinate</span>
                     </a>
                 </li>
+                   </ul>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <span
+                      class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                      data-bs-toggle="collapse" data-bs-target="#submenu-components">
+                      <span>
+                        <span class="sidebar-icon">
+                          <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path><path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                        </span> 
+                        <span class="sidebar-text">Manage Data</span>
+                      </span>
+                      <span class="link-arrow">
+                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                      </span>
+                    </span>
+                    <div class="multi-level collapse " role="list"
+                      id="submenu-components" aria-expanded="false">
+                      <ul class="flex-column nav">
+                        <li class="nav-item">
+                          <a class="nav-link"
+                            href="{{ route('center-point.index') }}">
+                            <span class="sidebar-text">Center Point</span>
+                          </a>
+                        </li>
+                        <li class="nav-item ">
+                          <a class="nav-link" href="#">
+                            <span class="sidebar-text">Spot</span>
+                          </a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                  </li>
                 <!--SIDEBAR MENU-->
               
                 <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>

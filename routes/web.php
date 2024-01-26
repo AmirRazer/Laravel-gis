@@ -33,5 +33,10 @@ Route::get('/geojson', [App\Http\Controllers\HomeController::class, 'geojson'])-
 Route::get('/get_coordinate', [App\Http\Controllers\HomeController::class, 'get_coordinate'])->name('get_coordinate');
 
 // Route Data table
-Route::get('/center-point/data', [App\Http\Controllers\backend\DataController::class, 'centerpoint'])->name('center-point-data');
+Route::get('/center-point/data', [App\Http\Controllers\backend\DataController::class, 'centerpoint'])->name('center-point.data');
 Route::resource('/center-point', App\Http\Controllers\backend\CenterPointController::class);
+// route edit
+Route::get('/center-point/edit/{id}', [App\Http\Controllers\backend\CenterPointController::class, 'edit'])->name('center-point.edit');
+//route update
+Route::put('/center-point/update/{id}', [App\Http\Controllers\backend\CenterPointController::class, 'update'])->name('center-point.update');
+
