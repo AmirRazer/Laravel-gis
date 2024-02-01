@@ -44,3 +44,4 @@ Route::put('/center-point/update/{id}', [App\Http\Controllers\backend\CenterPoin
 Route::get('/spot/data', [App\Http\Controllers\backend\DataController::class, 'spot'])->name('spot.data');
 Route::resource('/spot', App\Http\Controllers\backend\SpotController::class);
 
+
