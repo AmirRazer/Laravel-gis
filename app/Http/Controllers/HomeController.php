@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Models\Center_Point;
 use App\Models\Spot;
+
+use App\Models\User;
+use App\Models\kategori;
+use App\Models\Center_Point;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\kecamatan;
 
 class HomeController extends Controller
 {
@@ -25,10 +29,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
+   public function index()
+{
+    $spotCount = Spot::count();
+    $kategoriCount = kategori::count();
+    $kecamatans =kecamatan::withCount('spots')->get();
+    $userCount = User::count();
+    return view('home', ['spotCount' => $spotCount, 'kategoriCount' => $kategoriCount, 'userCount' => $userCount, 'kecamatans' => $kecamatans]);
+}
+public function dashboard()
+{
+    $currentUser = Auth::user(); // Mengambil pengguna yang sedang login
+    return view('dashboard-volt', ['user' => $currentUser]);
+}
     public function simple_map()
     {
         return view('leaflet.simple_map');
@@ -87,4 +100,5 @@ class HomeController extends Controller
         $spot = Spot::where('slug',$slug)->first();
         return view('frontend.detail',['spot' => $spot]);
     }
+    
 }

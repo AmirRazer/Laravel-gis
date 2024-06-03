@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\backend\DataController;
+use App\Http\Controllers\backend\SettingController;
+use App\Http\Controllers\backend\KategoriController;
+use App\Http\Controllers\backend\KabupatenController;
+use App\Http\Controllers\backend\KecamatanController;
+use App\Http\Controllers\backend\ManageAkunController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,8 +52,46 @@ Route::put('/center-point/update/{id}', [App\Http\Controllers\backend\CenterPoin
 
 // route spot
 Route::get('/spot/data', [App\Http\Controllers\backend\DataController::class, 'spot'])->name('spot.data');
-Route::resource('/spot', App\Http\Controllers\backend\SpotController::class);
+Route::resource('/spot', App\Http\Controllers\backend\SpotController::class); 
+//route kabupaten
 
+
+Route::get('/kabupaten', [KabupatenController::class, 'index'])->name('kabupaten.index');
+Route::get('/kabupaten/create', [KabupatenController::class, 'create'])->name('kabupaten.create');
+Route::post('/kabupaten', [KabupatenController::class, 'store'])->name('kabupaten.store');
+Route::get('/kabupaten/edit/{id}', [KabupatenController::class, 'edit'])->name('kabupaten.edit');
+Route::get('/kabupaten/data', [DataController::class, 'kabupaten'])->name('kabupaten.data');
+Route::put('/kabupaten/{kabupaten}', [KabupatenController::class, 'update'])->name('kabupaten.update');
+Route::delete('/kabupaten/{id}', [KabupatenController::class, 'destroy'])->name('kabupaten.destroy');
+
+//route kecamatan
+Route::get('/kecamatan/data', [DataController::class, 'kecamatan'])->name('kecamatan.data');
+Route::get('/kecamatan', [KecamatanController::class, 'index'])->name('kecamatan.index');
+Route::get('/kecamatan/create', [KecamatanController::class, 'create'])->name('kecamatan.create');
+Route::post('/kecamatan', [KecamatanController::class, 'store'])->name('kecamatan.store');
+Route::get('/kecamatan/edit/{id}', [KecamatanController::class, 'edit'])->name('kecamatan.edit');
+Route::put('/kecamatan/{kecamatan}', [KecamatanController::class, 'update'])->name('kecamatan.update');
+Route::delete('/kecamatan/{id}', [KecamatanController::class, 'destroy'])->name('kecamatan.destroy');
+
+
+//route kategori
+Route::get('/kategori/data', [DataController::class, 'kategori'])->name('kategori.data');
+Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
+Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
+Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
+Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
+Route::put('/kategori/{kategori}', [KategoriController::class, 'update'])->name('kategori.update');
+Route::delete('/kategori/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
+
+
+//route seting
+Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
+Route::put('/setting', [SettingController::class, 'update'])->name('setting.update');
+
+//manage akun
+Route::get('/manage-akun', [ManageAkunController::class, 'index'])->name('manageakun.index');
+Route::get('/manage-akun/data', [DataController::class, 'manageakun'])->name('manageakun.data');
 });
+
 
 

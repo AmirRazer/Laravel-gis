@@ -8,6 +8,8 @@ use App\Models\Center_Point;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use App\Models\kecamatan;
+use App\Models\kategori;
 use Illuminate\Support\Facades\Storage;
 
 class SpotController extends Controller
@@ -16,7 +18,9 @@ class SpotController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+        $kecamatan = kecamatan::all();
+        $kategori = kategori::all();
         return view('backend.spot.index');
     }
 
@@ -25,8 +29,10 @@ class SpotController extends Controller
      */
     public function create()
     {
+        $kecamatan = kecamatan::all();
+        $kategori = kategori::all();
         $centerPoint = Center_Point::get()->first();
-        return view('backend.spot.create',['centerPoint'=>$centerPoint]);
+           return view('backend.spot.create', compact('kecamatan', 'kategori', 'centerPoint'));
     }
 
     /**
@@ -62,6 +68,9 @@ class SpotController extends Controller
 
         $spot->name = $request->input('name');
         $spot->slug = Str::slug($request->name, '-');
+        $spot->kecamatan_id = $request->input('kecamatan_id');
+        $spot->kategori_id = $request->input('kategori_id');
+        
         $spot->description = $request->input('description');
         $spot->coordinates = $request->input('coordinate');
         $spot->save();

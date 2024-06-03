@@ -25,7 +25,7 @@
 @extends('layouts.dashboard-volt')
 
 @section('content')
-<div class="col-12 col-sm-6 col-xl-4 mb-4">
+<div class="col-12 col-sm-6 col-xl-4">
     <div class="card border-0 shadow">
         <div class="card-body">
             <div class="row d-block d-xl-flex align-items-center">
@@ -40,33 +40,17 @@
                         </svg>
                     </div>
                     <div class="d-sm-none">
-                        <h2 class="h5">Customers</h2>
-                        <h3 class="fw-extrabold mb-1">345,678</h3>
+                      <h2 class="h5">Spots</h2>
+                        <h3 class="fw-extrabold mb-1">{{ $spotCount }}</h3>
                     </div>
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
-                        <h2 class="h6 text-gray-400 mb-0">Customers</h2>
-                        <h3 class="fw-extrabold mb-2">345k</h3>
+                        <h2 class="h6 text-gray-400 mb-0">Jumlah Umkm</h2>
+                        <h3 class="fw-extrabold mb-2">{{ $spotCount }}</h3>
                     </div>
-                    <small class="d-flex align-items-center text-gray-500">
-                        Feb 1 - Apr 1,
-                        <svg class="icon icon-xxs text-gray-500 ms-2 me-1" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        USA
-                    </small>
-                    <div class="small d-flex mt-1">
-                        <div>Since last month <svg class="icon icon-xs text-success" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg><span class="text-success fw-bolder">22%</span></div>
-                    </div>
+                   
+                   
                 </div>
             </div>
         </div>
@@ -88,40 +72,23 @@
                         </svg>
                     </div>
                     <div class="d-sm-none">
-                        <h2 class="fw-extrabold h5">Revenue</h2>
-                        <h3 class="mb-1">$43,594</h3>
+                        <h2 class="h5">Kategori</h2>
+                        <h3 class="fw-extrabold mb-1">{{ $kategoriCount }}</h3>
                     </div>
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
-                        <h2 class="h6 text-gray-400 mb-0">Revenue</h2>
-                        <h3 class="fw-extrabold mb-2">$43,594</h3>
+                        <h2 class="h6 text-gray-400 mb-0">Jumlah Kecamatan</h2>
+                        <h3 class="fw-extrabold mb-2">{{ $kategoriCount }}</h3>
                     </div>
-                    <small class="d-flex align-items-center text-gray-500">
-                        Feb 1 - Apr 1,
-                        <svg class="icon icon-xxs text-gray-500 ms-2 me-1" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        GER
-                    </small>
-                    <div class="small d-flex mt-1">
-                        <div>Since last month <svg class="icon icon-xs text-danger" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg><span class="text-danger fw-bolder">2%</span></div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="col-12 col-sm-6 col-xl-4 mb-4">
+<div class="col-12 col-sm-6 col-xl-4">
     <div class="card border-0 shadow">
         <div class="card-body">
             <div class="row d-block d-xl-flex align-items-center">
@@ -136,29 +103,101 @@
                         </svg>
                     </div>
                     <div class="d-sm-none">
-                        <h2 class="fw-extrabold h5"> Bounce Rate</h2>
-                        <h3 class="mb-1">50.88%</h3>
+                       <h2 class="h5">Akun</h2>
+                        <h3 class="fw-extrabold mb-1">{{ $userCount }}</h3>
                     </div>
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
-                        <h2 class="h6 text-gray-400 mb-0"> Bounce Rate</h2>
-                        <h3 class="fw-extrabold mb-2">50.88%</h3>
+                       <h2 class="h6 text-gray-400 mb-0">Jumlah Akun</h2>
+                        <h3 class="fw-extrabold mb-2">{{ $userCount }}</h3>
                     </div>
-                    <small class="text-gray-500">
-                        Feb 1 - Apr 1
-                    </small>
-                    <div class="small d-flex mt-1">
-                        <div>Since last month <svg class="icon icon-xs text-success" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg><span class="text-success fw-bolder">4%</span></div>
-                    </div>
-                </div>
+                   
             </div>
         </div>
+        
+    </div>
+    
+</div>
+{{-- <div class="card">
+    <div class="card-body d-flex justify-content-between align-items-center">
+        <div class="d-block">
+            <div class="h6 fw-normal text-gray mb-2">Total Kecamatan</div>
+            <h2 class="h3 fw-extrabold" id="totalKecamatan">{{ count($kecamatans) }}</h2>
+            <div class="small mt-2">                               
+                <span class="fas fa-angle-up text-success"></span>                                   
+                <span class="text-success fw-bold">18.2%</span>
+            </div>
+        </div>
+        <div class="d-block ms-auto">
+            @foreach($kecamatans as $kecamatan)
+            <div class="d-flex align-items-center text-end mb-2">
+                <span class="dot rounded-circle bg-gray-800 me-2"></span>
+                <span class="fw-normal small">{{ $kecamatan->name }}</span>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div> --}}
+
+</div>
+<div class="card-body">
+           <canvas id="myChart" style="align-content: "></canvas>
     </div>
 </div>
+</div>
+    
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [@foreach($kecamatans as $kecamatan) '{{ $kecamatan->name }}', @endforeach],
+        datasets: [{
+            label: 'Jumlah Umkm',
+            data: [@foreach($kecamatans as $kecamatan) {{ $kecamatan->spots_count }}, @endforeach],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+            scales: {
+        y: {
+            beginAtZero: true,
+            ticks: {
+                stepSize: 1,
+                // Menggunakan callback untuk memformat label
+                callback: function(value, index, values) {
+                    return parseInt(value);
+                }
+            }
+        }
+    },
+        hover: {
+            animationDuration: 0  // durasi animasi hover diatur ke 0 untuk menonaktifkan efek hover
+        },
+        animation: {
+            duration: 1,
+            onComplete: function () {
+                var chartInstance = this.chart,
+                ctx = chartInstance.ctx;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+
+                this.data.datasets.forEach(function (dataset, i) {
+                    var meta = chartInstance.controller.getDatasetMeta(i);
+                    meta.data.forEach(function (bar, index) {
+                        var data = dataset.data[index];                            
+                        ctx.fillText(data, bar.x, bar.y - 5);
+                    });
+                });
+            }
+        }
+    }
+});
+</script>
+
 @endsection

@@ -39,7 +39,8 @@
                     <div class="card-body">
                         <p>
                         <h4><strong>Nama Spot :</strong></h4>
-                        <h5>Nama Spot</h5>
+                        <h5>{{ $spot->name }}</h5>
+
                         </p>
 
                         <p>

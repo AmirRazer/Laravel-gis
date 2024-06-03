@@ -9,6 +9,7 @@ class Spot extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    
 
     public function getImageAsset()
     {
@@ -20,4 +21,14 @@ class Spot extends Model
         }
         return 'https://placehold.co/200?text=No+Image';
     }
+     public function kategori()
+    {
+        return $this->belongsTo(kategori::class);
+    }
+
+    public function kecamatan()
+    {
+        return $this->belongsTo(kecamatan::class);
+    }
+
 }

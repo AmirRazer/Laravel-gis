@@ -81,7 +81,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         List Spot
@@ -105,7 +105,9 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Spot</th>
+                                    <th>Nama</th>
+                                    <th>Kategori</th>
+                                    <th>Kecamatan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -142,8 +144,10 @@
                         orderable: false,
                         searchable: false
                     }, {
-                        data: 'name'
-                    },
+                        data: 'name', name: 'name'
+                    },      
+                    {data: 'nama_kategori', name: 'nama_kategori'},
+                    {data: 'nama_kecamatan', name: 'nama_kecamatan'},
                     {
                         data: 'action'
                     }
@@ -151,4 +155,4 @@
             })
         })
     </script>
-@endpush
+@endpush 

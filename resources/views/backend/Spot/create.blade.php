@@ -16,7 +16,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">LAdd new spot</div>
+                    <div class="card-header">Add new spot</div>
                     <div class="card-body">
                         <div id="map"></div>
                     </div>
@@ -39,7 +39,7 @@
                             
                            
                         </div>
-                        <div class="form-group my-3">
+                        <div class="form-group my-1">
                             <label for="">Nama Spot</label>
                             <input type="text" class="form-control @error('name')
                                     is-invalid
@@ -48,8 +48,30 @@
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+                                  <div class="form-group my-1">
+                        <label for="">Nama Kecamatan</label>
+                            <select name="kecamatan_id" class="form-control @error('kecamatan_id')
+                                    is-invalid
+                                @enderror">
+                                <option value="">Pilih Kecamatan</option>
+                                @foreach ($kecamatan as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('kabupaten_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                    </div>
+                        <div class="form-group">
+                            <label for="kategori">Kategori</label>
+                            <select id="kategori" name="kategori_id" class="form-control">
+                                <option value="">Pilih Kategori</option>
+                                @foreach($kategori as $k)
+                                    <option value="{{ $k->id }}">{{ $k->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="form-group my-3">
+                        <div class="form-group my-1">
                             <label for="">Upload Gambar</label>
                             <input type="file" class="form-control @error('image')
                                     is-invalid
@@ -60,7 +82,7 @@
                                 @enderror
                         </div>
 
-                        <div class="form-group my-3">
+                        <div class="form-group my-1">
                             <label for="">Deskripsi</label>
                             <textarea name="description" class="form-control @error('description')
                                     is-invalid
