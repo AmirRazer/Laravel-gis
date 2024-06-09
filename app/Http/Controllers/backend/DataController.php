@@ -77,19 +77,19 @@ class DataController extends Controller
     {
        $users = User::with('setting')->select('users.*');
 
-        return DataTables::of($users)
-            ->addIndexColumn()
-            ->addColumn('first_name', function($row){
-                return $row->setting->first_name;
-            })
-            ->addColumn('gender', function($row){
-                return $row->setting->gender;
-            })
-            ->addColumn('phone', function($row){
-                return $row->setting->phone;
-            })
-            ->addColumn('action', 'manageakun.action')
-            ->rawColumns(['action'])
-            ->make(true);
+    return DataTables::of($users)
+        ->addIndexColumn()
+        ->addColumn('first_name', function($row){
+            return $row->setting->first_name ?? '';
+        })
+        ->addColumn('gender', function($row){
+            return $row->setting->gender ?? '';
+        })
+        ->addColumn('phone', function($row){
+            return $row->setting->phone ?? '';
+        })
+        ->addColumn('action', 'backend.manageakun.action')
+        ->rawColumns(['action'])
+        ->make(true);
     }
 }

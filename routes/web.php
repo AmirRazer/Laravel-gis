@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\DataController;
+use App\Http\Controllers\frontend\MapController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\KategoriController;
 use App\Http\Controllers\backend\KabupatenController;
@@ -23,7 +24,12 @@ use App\Http\Controllers\backend\ManageAkunController;
 // Route::get('/', function () {
 //     return view('layouts.frontend');
 // });
-Route::get('/',[\App\Http\Controllers\HomeController::class,'spots']);
+Route::get('/peta',[\App\Http\Controllers\HomeController::class,'spots']);
+Route::get('/',[\App\Http\Controllers\frontend\HomeController::class,'index']);
+
+//route maps
+Route::get('/maps',[MapController::class,'index'])->name('index');
+
 Route::get('/detail-spot/{slug}',[\App\Http\Controllers\HomeController::class,'detailSpot'])->name('detail-spot');
 
 Auth::routes();
@@ -88,10 +94,13 @@ Route::delete('/kategori/{id}', [KategoriController::class, 'destroy'])->name('k
 Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
 Route::put('/setting', [SettingController::class, 'update'])->name('setting.update');
 
+
+});
+Route::middleware(['auth', 'isAdmin'])->group(function () {
 //manage akun
 Route::get('/manage-akun', [ManageAkunController::class, 'index'])->name('manageakun.index');
 Route::get('/manage-akun/data', [DataController::class, 'manageakun'])->name('manageakun.data');
+Route::get('/manage-akun/show/{id}', [ManageAkunController::class, 'show'])->name('manageakun.show');
+Route::delete('/manage-akun/{id}', [ManageAkunController::class, 'destroy'])->name('manageakun.destroy');
 });
-
-
 

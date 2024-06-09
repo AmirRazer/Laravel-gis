@@ -168,7 +168,7 @@
                     </a>
                 </li>
                
-                   
+{{--                    
                 <li class="nav-item ">
                     <a href="../../pages/settings.html" class="nav-link">
                         <span class="sidebar-icon">
@@ -181,9 +181,9 @@
                         </span>
                         <span class="sidebar-text">Settings</span>
                     </a>
-                </li>
+                </li> --}}
 
-                <li class="nav-item 
+                {{-- <li class="nav-item 
                 {{ Request::is('simple-map') ?'active' : '' }}
                 ">
                     <a href="{{ route('simple-map') }}" class="nav-link ">
@@ -284,7 +284,7 @@
                         </span>
                         <span class="sidebar-text">Geojson</span>
                     </a>
-                </li>
+                </li> --}}
                 <!--SIDEBAR MENU-->
 {{--               
                 <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
@@ -351,6 +351,7 @@
                     </div>
                   </li>
                 <!--SIDEBAR MENU-->
+                
        <li class="nav-item">
     {{-- <a class="nav-link d-flex justify-content-between align-items-center" href="{{ route('settings.index') }}"> --}}
     <a class="nav-link d-flex justify-content-between align-items-center" href="{{route('setting.index')}}">
@@ -367,7 +368,7 @@
             <span class="sidebar-text">Settings</span>
         </span>
     </a>
-
+@if(auth()->user()->role_id == 2)
     {{-- Manage akun --}}
     <a class="nav-link d-flex justify-content-between align-items-center" href="{{route('manageakun.index')}}">
 
@@ -383,7 +384,7 @@
             <span class="sidebar-text">Manage Akun</span>
         </span>
     </a>
-</li>
+@endif</li>
                 <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
             </ul>
   
@@ -483,7 +484,7 @@
        
         <!--DISPLAY CONTENT-->
         <div class="row" style="min-height: 70vh;">
-           
+            
             @yield('content')
         </div>
         <!--DISPLAY CONTENT-->
