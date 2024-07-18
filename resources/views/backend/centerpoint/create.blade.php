@@ -57,7 +57,7 @@
 @endsection
 
 @push('javascript')
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <script>
         var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -75,8 +75,9 @@
             });
         var map = L.map('map', {
             center: [-5.129541583080711, 113.62957770241515],
+            zoom: 13,
             layers: [osm]
-        })
+        });
         var marker = L.marker([-5.129541583080711, 113.62957770241515], {
             draggable: true
         }).addTo(map);
@@ -119,3 +120,4 @@
         // CARA KEDUA
     </script>
 @endpush
+

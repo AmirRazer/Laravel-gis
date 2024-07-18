@@ -27,10 +27,11 @@ use App\Http\Controllers\backend\ManageAkunController;
 Route::get('/peta',[\App\Http\Controllers\HomeController::class,'spots']);
 Route::get('/',[\App\Http\Controllers\frontend\HomeController::class,'index']);
 
+Route::get('/',[\App\Http\Controllers\frontend\HomeController::class,'index'])->name('frontend');
 //route maps
 Route::get('/maps',[MapController::class,'index'])->name('index');
 
-Route::get('/detail-spot/{slug}',[\App\Http\Controllers\HomeController::class,'detailSpot'])->name('detail-spot');
+Route::get('/detail-spot/{slug}',[\App\Http\Controllers\HomeController::class,'detailSpot'])->name('detail-spot'); 
 
 Auth::routes();
 

@@ -97,8 +97,9 @@ public function dashboard()
 
     public function detailSpot($slug)
     {
-        $spot = Spot::where('slug',$slug)->first();
-        return view('frontend.detail',['spot' => $spot]);
+         // Menggunakan eager loading untuk relasi 'kecamatan' dan 'kategori'
+    $spot = Spot::with(['kecamatan', 'kategori'])->where('slug', $slug)->firstOrFail();
+    return view('frontendnew.detail', ['spot' => $spot]);
     }
     
 }

@@ -16,8 +16,8 @@
             <h1 class="">Aplikasi Pemetaan Umkm</h1>
             <p class="">Kabupaten Kudus</p>
             <div class="d-flex">
-              <a href="{{route('index')}}" class="btn-get-started">Get Started</a>
-              <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+              <a href="{{route('index')}}" class="btn-get-started">Tampilkan Peta</a>
+              {{-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
@@ -220,7 +220,7 @@
     </section><!-- /Services Section -->
 
     <!-- Call To Action Section -->
-    <section id="call-to-action" class="call-to-action section">
+    {{-- <section id="call-to-action" class="call-to-action section">
 
       <img src="{{asset('Arsha/assets/img/cta-bg.jpg')}}" alt="">
 
@@ -238,7 +238,7 @@
 
       </div>
 
-    </section><!-- /Call To Action Section -->
+    </section><!-- /Call To Action Section --> --}}
 
     <!-- Portfolio Section -->
     <!-- /Portfolio Section -->

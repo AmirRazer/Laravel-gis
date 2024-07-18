@@ -142,7 +142,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </span>
-                            <span class="sidebar-text">GIS Basic</span>
+                            <span class="sidebar-text">GIS </span>
                         </span>
                         <span class="link-arrow">
                             <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
@@ -290,7 +290,7 @@
                 <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
             </ul>
    --}}
-            <li class="nav-item 
+            {{-- <li class="nav-item 
                 {{ Request::is('get_coordinate') ? 'active' : '' }}
                 ">
                     <a href="{{ route('get_coordinate') }}" class="nav-link ">
@@ -299,7 +299,7 @@
                         </span>
                         <span class="sidebar-text">Get_coordinate</span>
                     </a>
-                </li>
+                </li> --}}
                    </ul>
                     </div>
                 </li>
@@ -321,17 +321,20 @@
                     <div class="multi-level collapse " role="list"
                       id="submenu-components" aria-expanded="false">
                       <ul class="flex-column nav">
+                        @if(auth()->user()->role_id == 2)
                         <li class="nav-item">
                           <a class="nav-link"
                             href="{{ route('center-point.index') }}">
                             <span class="sidebar-text">Center Point</span>
                           </a>
                         </li>
+                        @endif
                         <li class="nav-item ">
                           <a class="nav-link" href="{{ route('spot.index')}}">
                             <span class="sidebar-text">Spot</span>
                           </a>
                         </li>
+                        @if(auth()->user()->role_id == 2)
                          <li class="nav-item ">
                           <a class="nav-link" href="{{ route('kabupaten.index')}}">
                             <span class="sidebar-text">Kabupaten</span>
@@ -347,6 +350,7 @@
                             <span class="sidebar-text">Kategori</span>
                           </a>
                         </li>
+                        @endif
                       </ul>
                     </div>
                   </li>
@@ -413,15 +417,15 @@
                             <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="media d-flex align-items-center">
-                                    <img class="avatar rounded-circle" alt="Image placeholder"
-                                        src="{{ asset('volt/html&css/assets/img/team/profile-picture-3.jpg') }}">
+                                    {{-- <img class="avatar rounded-circle" alt="Image placeholder"
+                                        src="{{ asset('volt/html&css/assets/img/team/profile-picture-3.jpg') }}"> --}}
                                     <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                                         <span class="mb-0 font-small fw-bold text-gray-900">{{ $currentUser->name }}</span>
                                     </div>
                                 </div>
                             </a>
                             <div class="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1">
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                {{-- <a class="dropdown-item d-flex align-items-center" href="#">
                                     <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor"
                                         viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -456,7 +460,7 @@
                                             clip-rule="evenodd"></path>
                                     </svg>
                                     Support
-                                </a>
+                                </a> --}}
                                 <div role="separator" class="dropdown-divider my-1"></div>
                                 <a class="dropdown-item d-flex align-items-center" 
                                 href="{{ route('logout') }}" 
@@ -483,7 +487,7 @@
 
        
         <!--DISPLAY CONTENT-->
-        <div class="row" style="min-height: 70vh;">
+        <div class="row" style="min-height: 20vh;">
             
             @yield('content')
         </div>
@@ -493,11 +497,11 @@
         <footer class="bg-white rounded shadow p-5 mb-4 mt-3">
             <div class="row">
                 <div class="col-12 col-md-4 col-xl-6 mb-4 mb-md-0">
-                    <p class="mb-0 text-center text-lg-start">© 2019-<span class="current-year"></span> <a
+                    <p class="mb-0 text-center text-lg-start">2024 Dinas UMKM Kudus<span class="current-year"></span> <a
                             class="text-primary fw-normal" href="https://themesberg.com"
                             target="_blank">Themesberg</a></p>
                 </div>
-                <div class="col-12 col-md-8 col-xl-6 text-center text-lg-start">
+                {{-- <div class="col-12 col-md-8 col-xl-6 text-center text-lg-start">
                     <!-- List -->
                     <ul class="list-inline list-group-flush list-group-borderless text-md-end mb-0">
                         <li class="list-inline-item px-0 px-sm-2">
@@ -513,7 +517,7 @@
                             <a href="https://themesberg.com/contact">Contact</a>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
             </div>
         </footer>
     </main>

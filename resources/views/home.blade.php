@@ -78,7 +78,7 @@
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
-                        <h2 class="h6 text-gray-400 mb-0">Jumlah Kecamatan</h2>
+                        <h2 class="h6 text-gray-400 mb-0">Jumlah Kategori</h2>
                         <h3 class="fw-extrabold mb-2">{{ $kategoriCount }}</h3>
                     </div>
                     
@@ -87,7 +87,7 @@
         </div>
     </div>
 </div>
-
+ @if(auth()->user()->role_id == 2)
 <div class="col-12 col-sm-6 col-xl-4">
     <div class="card border-0 shadow">
         <div class="card-body">
@@ -107,6 +107,7 @@
                         <h3 class="fw-extrabold mb-1">{{ $userCount }}</h3>
                     </div>
                 </div>
+               
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
                        <h2 class="h6 text-gray-400 mb-0">Jumlah Akun</h2>
@@ -114,8 +115,9 @@
                     </div>
                    
             </div>
+            
         </div>
-        
+        @endif
     </div>
     
 </div>

@@ -57,9 +57,9 @@
                                     </div>
                                 </div>
                                 {{-- button update --}}
-                                <div class="mt-3">
+                                {{-- <div class="mt-3">
                                     <button class="btn btn-gray-800" type="submit">Perbarui</button>
-                                </div>
+                                </div> --}}
                                 {{-- buttton hapus dan ada route destroy
                                 <div class="mt-3">
                                     <button class="btn btn-danger" type="submit">Delete</button>
