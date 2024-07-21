@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\backend;
 
 use App\Models\Spot;
+use App\Models\kategori;
+use App\Models\kecamatan;
 use Illuminate\Support\Str;
 use App\Models\Center_Point;
 use Illuminate\Http\Request;
+use App\Models\DetailKategori;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use App\Models\kecamatan;
-use App\Models\kategori;
 use Illuminate\Support\Facades\Storage;
 
 class SpotController extends Controller
@@ -21,6 +22,7 @@ class SpotController extends Controller
     {   
         $kecamatan = kecamatan::all();
         $kategori = kategori::all();
+        $detailkategori = DetailKategori::all();
         return view('backend.spot.index');
     }
 
@@ -31,8 +33,9 @@ class SpotController extends Controller
     {
         $kecamatan = kecamatan::all();
         $kategori = kategori::all();
+        $detailkategori = DetailKategori::all();
         $centerPoint = Center_Point::get()->first();
-           return view('backend.spot.create', compact('kecamatan', 'kategori', 'centerPoint'));
+           return view('backend.spot.create', compact('kecamatan', 'kategori', 'centerPoint','detailkategori'));
     }
 
     /**
@@ -70,6 +73,7 @@ class SpotController extends Controller
         $spot->slug = Str::slug($request->name, '-');
         $spot->kecamatan_id = $request->input('kecamatan_id');
         $spot->kategori_id = $request->input('kategori_id');
+        $spot->detail_kategori_id = $request->input('detailkategori_id');
         
         $spot->description = $request->input('description');
         $spot->coordinates = $request->input('coordinate');
@@ -143,6 +147,10 @@ class SpotController extends Controller
 
        $spot->name = $request->input('name');
         $spot->slug = Str::slug($request->name, '-');
+        $spot->kecamatan_id = $request->input('kecamatan_id');
+        $spot->kategori_id = $request->input('kategori_id');
+        $spot->detail_kategori_id = $request->input('detailkategori_id');
+        
         $spot->description = $request->input('description');
         $spot->coordinates = $request->input('coordinate');
         $spot->update();

@@ -35,7 +35,8 @@ class HomeController extends Controller
     $kategoriCount = kategori::count();
     $kecamatans =kecamatan::withCount('spots')->get();
     $userCount = User::count();
-    return view('home', ['spotCount' => $spotCount, 'kategoriCount' => $kategoriCount, 'userCount' => $userCount, 'kecamatans' => $kecamatans]);
+    $kategori = kategori::all();
+    return view('home', ['spotCount' => $spotCount, 'kategoriCount' => $kategoriCount, 'userCount' => $userCount, 'kecamatans' => $kecamatans,'kategori'=>$kategori]);
 }
 public function dashboard()
 {

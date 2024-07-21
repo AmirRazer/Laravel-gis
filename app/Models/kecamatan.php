@@ -9,7 +9,7 @@ class kecamatan extends Model
 {
     use HasFactory;
      protected $guarded = [];
-    protected $fillable = ['name', 'kabupaten_id'];
+    protected $fillable = ['name', 'kabupaten_id','created_at', 'updated_at'];
     protected $table = 'kecamatan';
     protected $primaryKey = 'id';
 
@@ -20,5 +20,9 @@ class kecamatan extends Model
      public function spots()
     {
         return $this->hasMany(Spot::class);
+    }
+    public function detailKategori()
+    {
+        return $this->hasMany(DetailKategori::class);
     }
 }

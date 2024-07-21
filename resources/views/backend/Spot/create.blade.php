@@ -71,6 +71,15 @@
                                 @endforeach
                             </select>
                         </div>
+                         <div class="form-group">
+                            <label for="detailkategori">Detail Kategori</label>
+                            <select id="detailkategori" name="detailkategori_id" class="form-control">
+                                <option value="">Pilih Detail Kategori</option>
+                                @foreach($detailkategori as $k)
+                                    <option value="{{ $k->id }}">{{ $k->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group my-1">
                             <label for="">Upload Gambar</label>
                             <input type="file" class="form-control @error('image')

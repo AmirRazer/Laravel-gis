@@ -107,6 +107,7 @@
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Kategori</th>
+                                    <th>Detail Kategori</th>
                                     <th>Kecamatan</th>
                                     <th>Action</th>
                                 </tr>
@@ -147,6 +148,8 @@
                         data: 'name', name: 'name'
                     },      
                     {data: 'nama_kategori', name: 'nama_kategori'},
+                    
+                    {data: 'detail_kategori', name: 'detailKategori.name'},
                     {data: 'nama_kecamatan', name: 'nama_kecamatan'},
                     {
                         data: 'action'

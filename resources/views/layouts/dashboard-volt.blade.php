@@ -53,16 +53,16 @@
 
     <!-- Volt CSS -->
     <link type="text/css" href="{{ asset('volt/html&css/css/volt.css') }}" rel="stylesheet">
-    
-    
+
+
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
-@yield('css')
+    @yield('css')
 </head>
 
 <body>
 
     <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
-        <a class="navbar-brand me-lg-5" href="{{route('home')}}">
+        <a class="navbar-brand me-lg-5" href="{{ route('home') }}">
             <img class="navbar-brand-dark" src="{{ asset('volt/html&css/assets/img/brand/light.svg') }}"
                 alt="Volt logo" /> <img class="navbar-brand-light"
                 src="{{ asset('volt/html&css/assets/img/brand/dark.svg') }}" alt="Volt logo" />
@@ -117,10 +117,10 @@
             </div>
 
             <!--SIDEBAR NAV-->
-            
+
             <ul class="nav flex-column pt-3 pt-md-0">
                 <li class="nav-item">
-                    <a href="{{route('home')}}" class="nav-link d-flex align-items-center">
+                    <a href="{{ route('home') }}" class="nav-link d-flex align-items-center">
                         <span class="sidebar-icon">
                             <img src="{{ asset('volt/html&css/assets/img/brand/light.svg') }}" height="20"
                                 width="20" alt="Volt Logo">
@@ -155,20 +155,20 @@
                     </span>
                     <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
                         <ul class="flex-column nav">
-                <li class="nav-item {{ Request::is('home') ?'active' : '' }}">
-                    <a href="{{ route('home') }}" class="nav-link">
-                        <span class="sidebar-icon">
-                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                            </svg>
-                        </span>
-                        <span class="sidebar-text">Dashboard</span>
-                    </a>
-                </li>
-               
-{{--                    
+                            <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
+                                <a href="{{ route('home') }}" class="nav-link">
+                                    <span class="sidebar-icon">
+                                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                                            <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="sidebar-text">Dashboard</span>
+                                </a>
+                            </li>
+
+                            {{--                    
                 <li class="nav-item ">
                     <a href="../../pages/settings.html" class="nav-link">
                         <span class="sidebar-icon">
@@ -183,7 +183,7 @@
                     </a>
                 </li> --}}
 
-                {{-- <li class="nav-item 
+                            {{-- <li class="nav-item 
                 {{ Request::is('simple-map') ?'active' : '' }}
                 ">
                     <a href="{{ route('simple-map') }}" class="nav-link ">
@@ -285,12 +285,12 @@
                         <span class="sidebar-text">Geojson</span>
                     </a>
                 </li> --}}
-                <!--SIDEBAR MENU-->
-{{--               
+                            <!--SIDEBAR MENU-->
+                            {{--               
                 <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
             </ul>
    --}}
-            {{-- <li class="nav-item 
+                            {{-- <li class="nav-item 
                 {{ Request::is('get_coordinate') ? 'active' : '' }}
                 ">
                     <a href="{{ route('get_coordinate') }}" class="nav-link ">
@@ -300,102 +300,118 @@
                         <span class="sidebar-text">Get_coordinate</span>
                     </a>
                 </li> --}}
-                   </ul>
+                        </ul>
                     </div>
                 </li>
-                
+
                 <li class="nav-item">
-                    <span
-                      class="nav-link  collapsed  d-flex justify-content-between align-items-center"
-                      data-bs-toggle="collapse" data-bs-target="#submenu-components">
-                      <span>
-                        <span class="sidebar-icon">
-                          <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path><path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                        </span> 
-                        <span class="sidebar-text">Manage Data</span>
-                      </span>
-                      <span class="link-arrow">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                      </span>
+                    <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                        data-bs-toggle="collapse" data-bs-target="#submenu-components">
+                        <span>
+                            <span class="sidebar-icon">
+                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
+                                    <path fill-rule="evenodd"
+                                        d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="sidebar-text">Manage Data</span>
+                        </span>
+                        <span class="link-arrow">
+                            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </span>
                     </span>
-                    <div class="multi-level collapse " role="list"
-                      id="submenu-components" aria-expanded="false">
-                      <ul class="flex-column nav">
-                        @if(auth()->user()->role_id == 2)
-                        <li class="nav-item">
-                          <a class="nav-link"
-                            href="{{ route('center-point.index') }}">
-                            <span class="sidebar-text">Center Point</span>
-                          </a>
-                        </li>
-                        @endif
-                        <li class="nav-item ">
-                          <a class="nav-link" href="{{ route('spot.index')}}">
-                            <span class="sidebar-text">Spot</span>
-                          </a>
-                        </li>
-                        @if(auth()->user()->role_id == 2)
-                         <li class="nav-item ">
-                          <a class="nav-link" href="{{ route('kabupaten.index')}}">
-                            <span class="sidebar-text">Kabupaten</span>
-                          </a>
-                        </li>
-                         <li class="nav-item ">
-                          <a class="nav-link" href="{{ route('kecamatan.index')}}">
-                            <span class="sidebar-text">Kecamatan</span>
-                          </a>
-                        </li>
-                         <li class="nav-item ">
-                          <a class="nav-link" href="{{ route('kategori.index')}}">
-                            <span class="sidebar-text">Kategori</span>
-                          </a>
-                        </li>
-                        @endif
-                      </ul>
+                    <div class="multi-level collapse " role="list" id="submenu-components" aria-expanded="false">
+                        <ul class="flex-column nav">
+                            @if (auth()->user()->role_id == 2)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('center-point.index') }}">
+                                        <span class="sidebar-text">Center Point</span>
+                                    </a>
+                                </li>
+                            @endif
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('spot.index') }}">
+                                    <span class="sidebar-text">Spot</span>
+                                </a>
+                            </li>
+                            @if (auth()->user()->role_id == 2)
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{ route('kabupaten.index') }}">
+                                        <span class="sidebar-text">Kabupaten</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{ route('kecamatan.index') }}">
+                                        <span class="sidebar-text">Kecamatan</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{ route('kategori.index') }}">
+                                        <span class="sidebar-text">Kategori</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{ route('detailkategori.index') }}">
+                                        <span class="sidebar-text">Detail Kategori</span>
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
                     </div>
-                  </li>
+                </li>
                 <!--SIDEBAR MENU-->
-                
-       <li class="nav-item">
-    {{-- <a class="nav-link d-flex justify-content-between align-items-center" href="{{ route('settings.index') }}"> --}}
-    <a class="nav-link d-flex justify-content-between align-items-center" href="{{route('setting.index')}}">
 
-        <span>
-            <span class="sidebar-icon">
-                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </span>
-            <span class="sidebar-text">Settings</span>
-        </span>
-    </a>
-@if(auth()->user()->role_id == 2)
-    {{-- Manage akun --}}
-    <a class="nav-link d-flex justify-content-between align-items-center" href="{{route('manageakun.index')}}">
+                <li class="nav-item">
+                    {{-- <a class="nav-link d-flex justify-content-between align-items-center" href="{{ route('settings.index') }}"> --}}
+                    <a class="nav-link d-flex justify-content-between align-items-center"
+                        href="{{ route('setting.index') }}">
 
-        <span>
-            <span class="sidebar-icon">
-                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </span>
-            <span class="sidebar-text">Manage Akun</span>
-        </span>
-    </a>
-@endif</li>
+                        <span>
+                            <span class="sidebar-icon">
+                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="sidebar-text">Settings</span>
+                        </span>
+                    </a>
+                    @if (auth()->user()->role_id == 2)
+                        {{-- Manage akun --}}
+                        <a class="nav-link d-flex justify-content-between align-items-center"
+                            href="{{ route('manageakun.index') }}">
+
+                            <span>
+                                <span class="sidebar-icon">
+                                    <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                                <span class="sidebar-text">Manage Akun</span>
+                            </span>
+                        </a>
+                    @endif
+                </li>
                 <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
             </ul>
-  
+
 
 
             <!--HEADER NAV-->
-            
+
         </div>
     </nav>
 
@@ -407,12 +423,12 @@
                 <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
                     <div class="d-flex align-items-center">
                         <!-- Search form -->
-                       
+
                         <!-- / Search form -->
                     </div>
                     <!-- Navbar links -->
                     <ul class="navbar-nav align-items-center">
-                        
+
                         <li class="nav-item dropdown ms-lg-3">
                             <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -420,7 +436,8 @@
                                     {{-- <img class="avatar rounded-circle" alt="Image placeholder"
                                         src="{{ asset('volt/html&css/assets/img/team/profile-picture-3.jpg') }}"> --}}
                                     <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                        <span class="mb-0 font-small fw-bold text-gray-900">{{ $currentUser->name }}</span>
+                                        <span
+                                            class="mb-0 font-small fw-bold text-gray-900">{{ $currentUser->name }}</span>
                                     </div>
                                 </div>
                             </a>
@@ -462,9 +479,8 @@
                                     Support
                                 </a> --}}
                                 <div role="separator" class="dropdown-divider my-1"></div>
-                                <a class="dropdown-item d-flex align-items-center" 
-                                href="{{ route('logout') }}" 
-                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
 
                                     <svg class="dropdown-icon text-danger me-2" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -474,7 +490,8 @@
                                     </svg>
                                     Logout
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
                                     @csrf
                                 </form>
                             </div>
@@ -485,20 +502,20 @@
         </nav>
         <!--HEADER NAV-->
 
-       
+
         <!--DISPLAY CONTENT-->
         <div class="row" style="min-height: 20vh;">
-            
+
             @yield('content')
         </div>
         <!--DISPLAY CONTENT-->
 
-        
+
         <footer class="bg-white rounded shadow p-5 mb-4 mt-3">
             <div class="row">
                 <div class="col-12 col-md-4 col-xl-6 mb-4 mb-md-0">
-                    <p class="mb-0 text-center text-lg-start">2024 Dinas UMKM Kudus<span class="current-year"></span> <a
-                            class="text-primary fw-normal" href="https://themesberg.com"
+                    <p class="mb-0 text-center text-lg-start">2024 Dinas UMKM Kudus<span class="current-year"></span>
+                        <a class="text-primary fw-normal" href="https://themesberg.com"
                             target="_blank">Themesberg</a></p>
                 </div>
                 {{-- <div class="col-12 col-md-8 col-xl-6 text-center text-lg-start">
@@ -536,7 +553,7 @@
     <script src="{{ asset('volt/html&css/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
 
     <!-- Charts -->
-    
+
 
     <!-- Datepicker -->
     <script src="{{ asset('volt/html&css/vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
@@ -559,11 +576,12 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script>
-        window.setTimeout(function() => {
-            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove() 
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove()
             });
         }, 3000);
     </script>
@@ -572,10 +590,10 @@
     {{-- <script src="{{ asset('volt/hmtl&css/assets/js/volt.js') }}"></script> --}}
 
     <script>
-document.querySelector('.navbar-toggler').addEventListener('click', function() {
-    document.querySelector('.nav').classList.toggle('sidebar-collapsed');
-});
-</script>
+        document.querySelector('.navbar-toggler').addEventListener('click', function() {
+            document.querySelector('.nav').classList.toggle('sidebar-collapsed');
+        });
+    </script>
 </body>
 
 </html>

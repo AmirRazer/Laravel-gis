@@ -6,6 +6,7 @@ use App\Models\Spot;
 use App\Models\Center_Point;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\kategori;
 
 class MapController extends Controller
 {
@@ -14,10 +15,12 @@ class MapController extends Controller
     {
         $centerPoint = Center_Point::get()->first();
         $spot = Spot::get();
+         $kategori = Kategori::all();
 
         return view('frontendnew.maap',[
             'centerPoint' => $centerPoint,
-            'spot' => $spot
+            'spot' => $spot,
+            'kategori' => $kategori
         ]);
     }
         public function spots()

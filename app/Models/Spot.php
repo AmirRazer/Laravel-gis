@@ -9,7 +9,11 @@ class Spot extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    
+    protected $fillable = [
+    // kolom lain...
+    'detail_kategori_id',
+    // kolom lain...
+];
 
     public function getImageAsset()
     {
@@ -29,6 +33,10 @@ class Spot extends Model
     public function kecamatan()
     {
         return $this->belongsTo(kecamatan::class);
+    }
+    public function detailKategori()
+    {
+        return $this->belongsTo(DetailKategori::class, 'detail_kategori_id');
     }
 
 }

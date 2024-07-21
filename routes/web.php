@@ -9,6 +9,8 @@ use App\Http\Controllers\backend\KategoriController;
 use App\Http\Controllers\backend\KabupatenController;
 use App\Http\Controllers\backend\KecamatanController;
 use App\Http\Controllers\backend\ManageAkunController;
+use App\Http\Controllers\Backend\DetailKategoriController;
+use App\Models\kategori;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +97,20 @@ Route::delete('/kategori/{id}', [KategoriController::class, 'destroy'])->name('k
 Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
 Route::put('/setting', [SettingController::class, 'update'])->name('setting.update');
 
+//Detail kategori
+Route::get('/backend/detail-kategoris', [DetailKategoriController::class, 'index'])->name('detailkategori.index');
+ Route::get('/backend/detail-kategoris/create', [DetailKategoriController::class, 'create'])->name('detailkategori.create');
+Route::get('/detailkategori/data', [DataController::class, 'detailkategori'])->name('detailkategori.data');
+Route::post('/detailkategori', [DetailKategoriController::class, 'store'])->name('detailkategori.store');
+Route::get('/detailkategori/edit/{id}', [DetailKategoriController::class, 'edit'])->name('detailkategori.edit');
+Route::put('/detailkategori/{detailkategori}', [DetailKategoriController::class, 'update'])->name('detailkategori.update');
+Route::delete('/detailkategori/{id}', [DetailKategoriController::class, 'destroy'])->name('detailkategori.destroy');
+Route::get('/getDetailKategori/{kategoriId}', [KategoriController::class, 'getDetailKategori'])->name('getDetailKategori');
+
+
+
+Route::get('/getDetailKategori/{kategoriId}', [DetailKategoriController::class, 'getDetailKategori']);
+Route::get('/getChartData/{kategoriId}/{detailKategoriId}', [DetailKategoriController::class, 'getChartData']);
 
 });
 Route::middleware(['auth', 'isAdmin'])->group(function () {

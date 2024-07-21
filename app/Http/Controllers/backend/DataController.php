@@ -11,6 +11,7 @@ use App\Models\kecamatan;
 use App\Models\Center_Point;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\DetailKategori;
 use Yajra\DataTables\Facades\DataTables;
 
 class DataController extends Controller
@@ -27,14 +28,17 @@ class DataController extends Controller
 
     public function spot()
     {
-          $spot = Spot::with(['kecamatan', 'kategori'])->latest()->get();
-        
+          $spot = Spot::with(['kecamatan', 'kategori','detailKategori'])->latest()->get();
+            
         return datatables()->of($spot)
         ->addColumn('nama_kecamatan', function($row){
             return $row->kecamatan->name;
         })
         ->addColumn('nama_kategori', function($row){
             return $row->kategori->name;
+        })
+        ->addColumn('detail_kategori', function($row){
+            return $row->detailkategori->name; // Asumsi kolom nama pada DetailKategori adalah 'name'
         })
         ->addColumn('action','backend.Spot.action')
         ->addIndexColumn()
@@ -60,6 +64,19 @@ class DataController extends Controller
             return $row->kabupaten->name;
         })
         ->addColumn('action', 'backend.kecamatan.action')
+        ->rawColumns(['action'])
+        ->make(true);
+    }
+     public function detailkategori()
+    {
+         $detailkategori = DetailKategori::with('kategori')->select('detail_kategoris.*');
+
+    return Datatables::of($detailkategori)
+        ->addIndexColumn()
+        ->addColumn('nama_kategori', function($row){
+            return $row->kategori->name;
+        })
+        ->addColumn('action', 'backend.DetailKategori.action')
         ->rawColumns(['action'])
         ->make(true);
     }

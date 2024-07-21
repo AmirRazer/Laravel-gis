@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Models\kategori;
 use Illuminate\Http\Request;
+use App\Models\DetailKategori;
 use App\Http\Controllers\Controller;
 
 class KategoriController extends Controller
@@ -48,4 +49,10 @@ class KategoriController extends Controller
 
         return redirect()->route('kategori.index'); // Mengalihkan ke halaman index setelah menghapus
     }
+    public function getDetailKategori($kategoriId)
+{
+    $detailKategori = DetailKategori::where('kategori_id', $kategoriId)->get();
+    return response()->json($detailKategori);
+}
+
 }
