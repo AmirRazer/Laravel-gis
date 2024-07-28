@@ -47,6 +47,11 @@ class SpotController extends Controller
             'name'=>'required',
             'description'=>'required',
             'image'=>'file|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'kecamatan_id'=>'required',
+            'kategori_id'=>'required',
+            'detailkategori_id'=>'required',
+            'coordinate'=>'required'
+            
         ]);
 
         
