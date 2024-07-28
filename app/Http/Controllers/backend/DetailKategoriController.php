@@ -87,7 +87,15 @@ public function getChartData($kategoriId, $detailKategoriId)
                         ->where('kategori_id', $kategoriId)
                         ->groupBy('kecamatan_id') // Group by both kecamatan_id and kecamatan.name to comply with ONLY_FULL_GROUP_BY
                         ->get();
-    } else {
+    } 
+    elseif ($kategoriId == 0) { // Assuming -1 (or another specific value) is used to indicate "all"
+    // If a special value (e.g., -1) is selected, fetch all spots regardless of detail category
+    $data = Spot::select('kecamatan_id', DB::raw('count(spots.id) as spots_count'))
+                ->where('kategori_id', $kategoriId)
+                ->groupBy('kecamatan_id')
+                ->get();
+            }
+    else {
         
         $data = Spot::select('kecamatan_id', DB::raw('count(spots.id) as spots_count'))
         ->where('kategori_id', $kategoriId)

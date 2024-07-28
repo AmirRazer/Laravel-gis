@@ -131,7 +131,7 @@
     </select>
     </div>
     <div class="card-body">
-        <canvas id="myChart" style="align-content: "></canvas>
+        <canvas id="myChart" style="align-content: " width="100" height="30"></canvas>
     </div>
     </div>
     </div>

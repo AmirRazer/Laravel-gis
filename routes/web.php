@@ -109,7 +109,7 @@ Route::get('/getDetailKategori/{kategoriId}', [KategoriController::class, 'getDe
 
 
 
-Route::get('/getDetailKategori/{kategoriId}', [DetailKategoriController::class, 'getDetailKategori']);
+
 Route::get('/getChartData/{kategoriId}/{detailKategoriId}', [DetailKategoriController::class, 'getChartData']);
 
 });
@@ -120,4 +120,4 @@ Route::get('/manage-akun/data', [DataController::class, 'manageakun'])->name('ma
 Route::get('/manage-akun/show/{id}', [ManageAkunController::class, 'show'])->name('manageakun.show');
 Route::delete('/manage-akun/{id}', [ManageAkunController::class, 'destroy'])->name('manageakun.destroy');
 });
-
+Route::get('/getDetailKategori/{kategoriId}', [DetailKategoriController::class, 'getDetailKategori']);

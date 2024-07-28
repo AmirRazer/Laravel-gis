@@ -10,34 +10,34 @@
 @endsection
 
 @section('content')
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
 
-<div class="container">
-    <div class="">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Peta Umkm</div>
-                <div class="card-body">
-                    <div id="map" style="height: 500px"></div>
-                    {{-- Dropdown untuk Kategori --}}
-                    <select id="kategori" name="kategori">
-                        <option value="">Pilih Kategori</option>
-                        @foreach($kategori as $kat)
-                            <option value="{{ $kat->id }}">{{ $kat->name }}</option>
-                        @endforeach
-                    </select>
+    <div class="container">
+        <div class="">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Peta Umkm</div>
+                    <div class="card-body">
+                        <div id="map" style="height: 500px"></div>
+                        {{-- Dropdown untuk Kategori --}}
+                        <select id="kategori" name="kategori">
+                            <option value="">Pilih Kategori</option>
+                            @foreach ($kategori as $kat)
+                                <option value="{{ $kat->id }}">{{ $kat->name }}</option>
+                            @endforeach
+                        </select>
 
-                    {{-- Dropdown untuk Detail Kategori, awalnya kosong --}}
-                    <select id="detailkategori" name="detailkategori">
-                        <option value="">Pilih Detail Kategori</option>
-                    </select>
+                        {{-- Dropdown untuk Detail Kategori, awalnya kosong --}}
+                        <select id="detailkategori" name="detailkategori">
+                            <option value="">Pilih Detail Kategori</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @push('javascript')
@@ -85,7 +85,10 @@
                     "loc": [{{ $value->coordinates }}],
                     "title": '{!! $value->name !!}',
                     "kategori": {{ $value->kategori_id }},
-                    "detailKategori": {{ $value->detail_kategori_id }}
+                    "detailKategori": {{ $value->detail_kategori_id }},
+                     "image": '{!! $value->image !!}',
+                     "slug": '{!! $value->slug !!}',
+                     
                 },
             @endforeach
         ];
@@ -102,13 +105,34 @@
 
         map.addControl(controlSearch);
 
-        // Dapatkan posisi Anda saat ini
-        var currentLatLng;
-        navigator.geolocation.getCurrentPosition(function(position) {
-            currentLatLng = L.latLng(position.coords.latitude, position.coords.longitude);
-        });
+        function updateKategoriMarkers(kategoriId) {
+            markersLayer.clearLayers();
+            for (i in datas) {
+                if (datas[i].kategori == kategoriId || !kategoriId) {
+                    var title = datas[i].title,
+                    loc = datas[i].loc,
+                    marker = new L.Marker(new L.latLng(loc), {
+                        title: title
+                    });
+                    
+                    markersLayer.addLayer(marker);
+                    var destinationLatLng = datas[i].loc;
+                    var popupContent =
+                                "<div class='my-2'><img src='./upload/spots/"+datas[i].image+"' class='img-fluid' width='700px'></div>" +
+                                "<div class='my-2'><strong>Nama Spot : </strong> <br>"+datas[i].title+"</div>" +
+                                "<div><a href='detail-spot/"+datas[i].slug+"' class='btn btn-outline-info'>Detail Spot</a></div>";
 
-        function updateMarkers(detailKategoriId) {
+                            // Bind the popup to the marker
+                             marker.bindPopup(popupContent);
+
+                            marker.addTo(map);
+
+                }
+                }
+            }
+        
+
+        function updateDetailMarkers(detailKategoriId) {
             markersLayer.clearLayers();
             for (i in datas) {
                 if (datas[i].detailKategori == detailKategoriId || !detailKategoriId) {
@@ -118,38 +142,44 @@
                             title: title
                         });
                     markersLayer.addLayer(marker);
+                        
+                    markersLayer.addLayer(marker);
+                    var destinationLatLng = datas[i].loc;
+                    var popupContent =
+                                "<div class='my-2'><img src='./upload/spots/"+datas[i].image+"' class='img-fluid' width='700px'></div>" +
+                                "<div class='my-2'><strong>Nama Spot : </strong> <br>"+datas[i].title+"</div>" +
+                                "<div><a href='detail-spot/"+datas[i].slug+"' class='btn btn-outline-info'>Detail Spot</a></div>";
 
-                    @foreach ($spot as $item)
-                        @if ($item->coordinates)
-                            var destinationLatLng = [{{ $item->coordinates }}];
-                            var marker = L.marker(destinationLatLng)
-                            marker.bindPopup(
-                                "<div class='my-2'><img src='{{ $item->getImageAsset() }}' class='img-fluid' width='700px'></div>" +
-                                "<div class='my-2'><strong>Nama Spot : </strong> <br>{{ $item->name }}</div>" +
-                                "<div><a href='{{ route('detail-spot', $item->slug) }}' class='btn btn-outline-info'>Detail Spot</a></div>" 
-                                // +"<div> <button class='btn btn-outline-success show-route'>Petunjuk Arah</button></div>"
-                            )
-                               .addTo(map)
-                           
-                            // Tambahkan event listener ke tombol Petunjuk Arah
-                            marker.on('popupopen', function() {
-                                document.querySelector('.show-route').addEventListener('click', function() {
-                                    // Buat rute dari posisi saat ini ke tujuan
-                                    L.Routing.control({
-                                        waypoints: [
-                                            currentLatLng, // titik awal (posisi Anda saat ini)
-                                            L.latLng(destinationLatLng) // titik akhir
-                                        ],
-                                        routeWhileDragging: true
-                                    }).addTo(map);
-                                });
-                            });
-                        @endif
-                    @endforeach
+                            // Bind the popup to the marker
+                             marker.bindPopup(popupContent);
+
+                            marker.addTo(map);
+                    
                 }
             }
         }
+    
 
+        // $('#kategori').change(function() {
+        //     var kategoriId = $(this).val();
+        //     if (kategoriId) {
+        //         $.ajax({
+        //             url: '/getDetailKategori/' + kategoriId,
+
+        //             type: 'GET',
+        //             dataType: 'json',
+
+        //             success: function(data) {
+        //                 $('#detailkategori').empty().append('<option value="">Pilih Detail Kategori</option>');
+        //                 $.each(data, function(key, value) {
+        //                     $('#detailkategori').append('<option value="' + value.id + '">' + value.name + '</option>');
+        //                 });
+        //             }
+        //         });
+        //     } else {
+        //         $('#detailkategori').empty().append('<option value="">Pilih Detail Kategori</option>');
+        //     }
+        // });
         $('#kategori').change(function() {
             var kategoriId = $(this).val();
             if (kategoriId) {
@@ -158,10 +188,17 @@
                     type: 'GET',
                     dataType: 'json',
                     success: function(data) {
-                        $('#detailkategori').empty().append('<option value="">Pilih Detail Kategori</option>');
+                        $('#detailkategori').empty().append(
+                            '<option value="">Pilih Detail Kategori</option>');
                         $.each(data, function(key, value) {
-                            $('#detailkategori').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            $('#detailkategori').append('<option value="' + value.id + '">' +
+                                value.name + '</option>');
                         });
+                        updateKategoriMarkers(kategoriId);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error: ", status, error);
+                        console.log("Response: ", xhr.responseText);
                     }
                 });
             } else {
@@ -171,9 +208,9 @@
 
         $('#detailkategori').change(function() {
             var detailKategoriId = $(this).val();
-            updateMarkers(detailKategoriId);
+            updateDetailMarkers(detailKategoriId);
         });
 
-        updateMarkers();
+        updateKategoriMarkers();
     </script>
 @endpush

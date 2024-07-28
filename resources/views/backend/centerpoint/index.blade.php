@@ -84,7 +84,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        Set Center Point
+                         Center Point
                         <a href="{{ route('center-point.create') }}" class="btn btn-info btn-sm float-end">Create data</a>
                     </div>
                     <div class="card-body">
