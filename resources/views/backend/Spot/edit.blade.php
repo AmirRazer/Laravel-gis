@@ -50,6 +50,33 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                         </div>
+                        <label for="">Nama Kecamatan</label>
+                            <select name="kecamatan_id" class="form-control @error('kecamatan_id')
+                                    is-invalid
+                                @enderror">
+                                <option value="">Pilih Kecamatan</option>
+                                @foreach ($kecamatan as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('kabupaten_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                            <label for="kategori">Kategori</label>
+                            <select id="kategori" name="kategori_id" class="form-control">
+                                <option value="">Pilih Kategori</option>
+                                @foreach($kategori as $k)
+                                    <option value="{{ $k->id }}">{{ $k->name }}</option>
+                                @endforeach
+                            </select>
+                            <label for="detailkategori">Detail Kategori</label>
+                            <select id="detailkategori" name="detailkategori_id" class="form-control">
+                                <option value="">Pilih Detail Kategori</option>
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+                        </div>
+                        
                         <div class="form-group my-3">
                             <label for="">Upload Gambar</label>
                             <img src="{{$spot->getImageAsset() }}" alt="">
@@ -66,7 +93,7 @@
                             <label for="">Deskripsi</label>
                             <textarea name="description" class="form-control @error('description')
                                     is-invalid
-                                @enderror" id="" cols="30" rows="10" {{$spot->description}}></textarea>
+                                @enderror" id="" cols="30" rows="10"> {{$spot->description}}</textarea>
                                 
                                 @error('description')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -152,4 +179,43 @@
         })
         // CARA KEDUA
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Hide detailkategori on page load
+    $('#detailkategori-container').hide();
+
+    // Show detailkategori and load data when kategori is selected
+    $('#kategori').change(function() {
+        var kategoriId = $(this).val();
+        if (kategoriId) {
+            // Show the detailkategori container
+            $('#detailkategori-container').show();
+
+            // Make an AJAX request to get the detail categories
+            $.ajax({
+                url: '/getDetailKategori/' + kategoriId,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    // Clear the existing options
+                    $('#detailkategori').empty().append('<option value="">Pilih Detail Kategori</option>');
+                    
+                    // Populate the detailkategori select with new options
+                    $.each(data, function(key, value) {
+                        $('#detailkategori').append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", status, error);
+                }
+            });
+        } else {
+            // Hide the detailkategori container if no kategori is selected
+            $('#detailkategori-container').hide();
+            $('#detailkategori').empty().append('<option value="">Pilih Detail Kategori</option>');
+        }
+    });
+});
+</script>
 @endpush

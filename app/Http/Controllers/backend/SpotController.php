@@ -102,9 +102,15 @@ class SpotController extends Controller
     public function edit(Spot $spot)
     {
         $centerPoint = Center_Point::get()->first();
+         $kecamatan = Kecamatan::all(); // Ambil data kecamatan dari database
+         $kategori = Kategori::all(); // Ambil data kategori dari database
         return view('backend.Spot.edit',[
             'centerPoint'=>$centerPoint,
-            'spot'=>$spot
+            'spot'=>$spot,
+             'kecamatan' => $kecamatan, // Teruskan data kecamatan ke tampilan
+             'kategori' => $kategori // Teruskan data kategori ke tampilan
+            
+            
         ]);
     }
 
@@ -117,6 +123,10 @@ class SpotController extends Controller
             'name'=>'required',
             'description'=>'required',
             'image'=>'file|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'kecamatan_id'=>'required',
+            'kategori_id'=>'required',
+            'detailkategori_id'=>'required',
+            
         ]);
 
         if ($request->hasFile('image')){

@@ -87,7 +87,7 @@
                         List Spot
                         <a href="{{ route('spot.create') }}" class="btn btn-info btn-sm float-end">Add a new spot</a>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body overflow-scroll">
                         
                         @if (session('success'))
                             <div class="alert alert-success" role="alert">
@@ -101,7 +101,7 @@
                             </div>
                         @endif
 
-                        <table class="table" id="dataSpot">
+                        <table class="table" width="100%" id="dataSpot">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -139,11 +139,14 @@
                 responisve: true,
                 lengthChange: true,
                 autoWidth: false,
+                autoWidth: true,
+
+                columnDefs: [{ width: '100px', targets: 1 }],
                 ajax: '{{ route('spot.data') }}',
                 columns: [{
                         data: 'DT_RowIndex',
-                        orderable: false,
-                        searchable: false
+                        orderable: true,
+                        searchable: true
                     }, {
                         data: 'name', name: 'name'
                     },      
