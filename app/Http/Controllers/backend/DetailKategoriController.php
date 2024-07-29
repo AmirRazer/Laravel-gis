@@ -53,6 +53,11 @@ public function edit($id)
 // update
 public function update(Request $request, DetailKategori $detailkategori)
 {
+    $request->validate([
+        'name' => 'required',
+        'kategori_id' => 'required',
+    ]);
+
     $detailkategori->name = $request->name;
     $detailkategori->kategori_id = $request->kategori_id;
     $detailkategori->save();

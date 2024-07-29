@@ -18,6 +18,10 @@ class KabupatenController extends Controller
     }
      public function store(Request $request)
     {
+
+        $request->validate([
+            'name' => 'required', // Validation for the 'name' field
+        ]);
         $kabupaten = new kabupaten;
         $kabupaten->name = $request->name; // Mengisi nama kabupaten dari request
         // Tambahkan kode untuk mengisi kolom lainnya jika ada

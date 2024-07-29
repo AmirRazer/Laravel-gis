@@ -24,6 +24,10 @@ $kecamatan = kecamatan::with('kabupaten')->get();
 public function store(Request $request)
 {
     // Validate the request...
+    $request->validate([
+        'name' => 'required|unique:kecamatans',
+        'kabupaten_id' => 'required',
+    ]);
     
     $kecamatan = new Kecamatan;
     $kecamatan->name = $request->name;
@@ -45,11 +49,18 @@ public function edit($id)
 // update
 public function update(Request $request, kecamatan $kecamatan)
 {
+    
+    $request->validate([
+        'name' => 'required',
+        'kabupaten_id' => 'required',
+    ]);
+
+
     $kecamatan->name = $request->name;
     $kecamatan->kabupaten_id = $request->kabupaten_id;
     $kecamatan->save();
 
-    return redirect()->route('kecamatan.index');
+    return redirect()->route('kecamatan.index')->with('success', 'Data updated successfully');
 }
 public function destroy($id)
 {
