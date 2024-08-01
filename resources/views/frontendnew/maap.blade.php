@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-header">Peta Umkm</div>
                     <div class="card-body">
-                        <div id="map" style="height: 500px"></div>
+                        <div id="map" style="height: 450px"></div>
                         {{-- Dropdown untuk Kategori --}}
                         <select id="kategori" name="kategori">
                             <option value="">Pilih Kategori</option>
